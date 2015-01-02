@@ -15,7 +15,7 @@
 		<form id="form_949981" class="appnitro" method="post" action="SaveApi.php">
 					<div class="form_description">
 			<h2>Bulk Copyscape Setup</h2>
-			<p>please get the details below at <a href="http://copyscape.com" alt="copyscape">http://copyscape.com</a>, and be sure to add some cash to your premium account.</p>
+			<p>please get the details below at <a href="http://copyscape.com/apiconfigure.php#key alt="copyscape">http://copyscape.com/apiconfigure.php#key</a>, and be sure to add some cash to your premium account.</p>
 		</div>						
 			<ul>
 			
@@ -23,12 +23,12 @@
 		<label class="description" for="element_1">Copyscape Username </label>
 		<div>
 			<input id="element_1" name="element_1" class="element text medium" type="text" maxlength="255" value=""> 
-		</div><p class="guidelines" id="guide_1"><small>Get this at http://copyscape.com</small></p> 
+		</div><p class="guidelines" id="guide_1"><small>Get this at http://copyscape.com/apiconfigure.php#key</small></p> 
 		</li>		<li id="li_2">
 		<label class="description" for="element_2">Copyscape API key </label>
 		<div>
 			<input id="element_2" name="element_2" class="element text medium" type="text" maxlength="255" value=""> 
-		</div><p class="guidelines" id="guide_2"><small>Get this at http://copyscape.com</small></p> 
+		</div><p class="guidelines" id="guide_2"><small>Get this at http://copyscape.com/apiconfigure.php#key</small></p>
 		</li>
 			
 					<li class="buttons">
