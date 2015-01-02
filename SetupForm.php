@@ -12,7 +12,7 @@
 	<div id="form_container">
 	
 		<h1><a>Bulk Copyscape Setup Form</a></h1>
-		<form id="form_949981" class="appnitro" method="post" action="#">
+		<form id="form_949981" class="appnitro" method="post" action="SaveApi.php">
 					<div class="form_description">
 			<h2>Bulk Copyscape Setup</h2>
 			<p>please get the details below at <a href="http://copyscape.com" alt="copyscape">http://copyscape.com</a>, and be sure to add some cash to your premium account.</p>
