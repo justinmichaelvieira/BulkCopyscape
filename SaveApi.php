@@ -14,7 +14,7 @@ ini_set('error_log', "c:/php.log");
 function mk_file($filename) {
     if(!is_file($filename)) {
 		$handle = fopen($filename,"w"); //create the file
-		$string = "module.exports = {u: " . $_POST['element_1'] . ", k: " . $_POST['element_2'] . "}";
+		$string = "{\"u\": \"" . $_POST['element_1'] . "\", \"k\": \"" . $_POST['element_2'] . "\"}";
 		fwrite($handle, $string); 
 		
         fclose($handle);

@@ -13,7 +13,7 @@
 	<div id="form_container">
 	
 		<h1><a>Perform Bulk Copyscape</a></h1>
-		<form id="form_949981" class="appnitro" enctype="multipart/form-data" method="post" action="">
+		<form id="form_949981" class="appnitro" enctype="multipart/form-data" method="post" action="RunResults.php">
 					<div class="form_description">
 			<h2>Perform Bulk Copyscape</h2>
 			<p>Select a file below and click "Go" to run the bulk copyscript operation.</p>
