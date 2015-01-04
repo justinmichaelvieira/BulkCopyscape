@@ -11,6 +11,7 @@ Requires [PHP](http://php.net) and [Curl](http://curl.haxx.se)
 Windows Users:
 
 * Give [the installer](https://github.com/angryrancor/BulkCopyscape/blob/master/windows-installer/Installer/InstallBulkCopyscape.exe) a try.
+* Set {install dir}/uploads writeable by your webserver (or alternatively everyone)
 * Make sure Curl is in your system PATH.
 
 Other Platforms:
