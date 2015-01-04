@@ -2,8 +2,11 @@
 <body>
 
 <?php
+    
+$str = file_get_contents("InstallConfig.json");
+$json = json_decode($str, true);
 
-$file1= "c:\\inetpub\\wwwroot\\test1\\uploads\\BulkCSConfig.json";
+$file1= $json['UploadDir'] . "BulkCSConfig.json";
 $debug = 0;
 
 error_reporting(E_ALL | E_STRICT);

@@ -3,6 +3,8 @@
 <?php
 
 $debug = 0;
+    $str = file_get_contents("InstallConfig.json");
+    $installjson = json_decode($str, true);
 
 /**
  *
@@ -92,7 +94,7 @@ if($_FILES["element_1"]["name"])
 	if($message) echo "<p>$message</p>"; 
 	
 	//Get data in config.json
-	$str = file_get_contents("c:\\inetpub\\wwwroot\\test1\\uploads\\BulkCSConfig.json");
+	$str = file_get_contents($installjson['UploadDir']."BulkCSConfig.json");
 	$json = json_decode($str, true);
 
 	if($debug)
@@ -108,7 +110,7 @@ if($_FILES["element_1"]["name"])
 	$url = 'http://www.copyscape.com/api/';
 
 	//Check for extracted files
-	$directory = "c:\\inetpub\\wwwroot\\test1\\uploads\\";
+	$directory = $installjson['UploadDir'];
     if (!is_dir($directory)) {
         echo('Upload directory does not exist.');
     }
