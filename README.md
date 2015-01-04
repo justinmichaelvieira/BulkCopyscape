@@ -10,7 +10,7 @@ Requires [PHP](http://php.net) and [Curl](http://curl.haxx.se)
 
 Windows Users:
 
-* Give https://github.com/angryrancor/BulkCopyscape/blob/master/windows-installer/Installer/InstallBulkCopyscape.exe a try.
+* Give [the installer](https://github.com/angryrancor/BulkCopyscape/blob/master/windows-installer/Installer/InstallBulkCopyscape.exe) a try - Click the Raw button to download it.
 * Make sure Curl is in your system PATH.
 
 Other Platforms:
