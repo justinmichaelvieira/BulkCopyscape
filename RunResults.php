@@ -1,122 +1,61 @@
 <html>
+<head>
+
+<script type="text/javascript" src="js/jquery-latest.min.js">
+<script type="text/javascript" src="js/jquery-ui.js">
+</script>
+<!-- Toggle Panels
+<script type="text/javascript">
+	$(document).ready(function() {
+		$(".flip").click(function() {
+			$(".panel").slideToggle("slow");
+		});
+	});
+	
+	$(document).ready(function() {
+		$(".flip2").click(function() {
+			$(".panel2").slideToggle("slow");
+		});
+	});
+</script> -->
+ <script>
+  jQuery(document).ready(function() {
+    jQuery( document ).tooltip();
+	jQuery( ".tabs" ).tabs();
+  })
+</script>
+<LINK rel="stylesheet" href="style.css" type="text/css">
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css" />
+<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+</head>
+
 <body>
 <?php
 
 $debug = 0;
-    $str = file_get_contents("InstallConfig.json");
-    $installjson = json_decode($str, true);
 
-/**
- *
- * @get text between tags
- *
- * @param string $tag The tag name
- *
- * @param string $html The XML or XHTML string
- *
- * @param int $strict Whether to use strict mode
- *
- * @return array
- *
- */
-function getTextBetweenTags($tag, $html, $strict=0)
-{
-    /*** a new dom object ***/
-    $dom = new domDocument;
-
-    /*** load the html into the object ***/
-    if($strict==1)
-    {
-        $dom->loadXML($html);
-    }
-    else
-    {
-        $dom->loadHTML($html);
-    }
-
-    /*** discard white space ***/
-    $dom->preserveWhiteSpace = false;
-
-    /*** the tag by its tag name ***/
-    $content = $dom->getElementsByTagname($tag);
-
-    /*** the array to return ***/
-    $out = array();
-    foreach ($content as $item)
-    {
-        /*** add node value to the out array ***/
-        $out[] = $item->nodeValue;
-    }
-    /*** return the results ***/
-    return $out;
-}
+include_once('TextFunctions.php');
+include_once('JsonFunctions.php');
+include_once('CurlFunctions.php');
 
 if($_FILES["element_1"]["name"]) 
 {
-	$filename = $_FILES["element_1"]["name"];
-	$source = $_FILES["element_1"]["tmp_name"];
-	$type = $_FILES["element_1"]["type"];
+	include('GetZip.php');
 	
-	$name = explode(".", $filename);
-	$accepted_types = array('application/zip', 'application/x-zip-compressed', 'multipart/x-zip', 'application/x-compressed');
-	foreach($accepted_types as $mime_type) {
-		if($mime_type == $type) {
-			$okay = true;
-			break;
-		} 
-	}
-	
-	$continue = strtolower($name[1]) == 'zip' ? true : false;
-	if(!$continue) {
-		$message = "The file you are trying to upload is not a .zip file. Please try again.";
-	}
-
-	$target_path = "./uploads/".$filename;  // change this to the correct site path
-	if(move_uploaded_file($source, $target_path)) 
-	{
-		$zip = new ZipArchive();
-		$x = $zip->open($target_path);
-		
-		if ($x === true) 
-		{
-			$zip->extractTo("./uploads"); // change this to the correct site path
-			$zip->close();
-	
-			unlink($target_path);
-		}
-		$message = "Hooray! Your .zip file was uploaded and unpacked.";
-	} 
-	else 
-	{	
-		$message = "There was a problem with the upload. Please try again.";
-	}
-	
-	if($message) echo "<p>$message</p>"; 
-	
-	//Get data in config.json
-	$str = file_get_contents($installjson['UploadDir']."BulkCSConfig.json");
-	$json = json_decode($str, true);
-
-	if($debug)
-	{
-		echo "json data:<p />";
-		echo '<pre>' . print_r($json, true) . '</pre>';
-	}
+	$json = GetJson("c:\\inetpub\\wwwroot\\test1\\uploads\\BulkCSConfig.json", $debug);
 
 	//extract data from the post
 	extract($_POST);
-
-	//set POST variables
 	$url = 'http://www.copyscape.com/api/';
 
 	//Check for extracted files
-	$directory = $installjson['UploadDir'];
+	$directory = "c:\\inetpub\\wwwroot\\test1\\uploads\\";
     if (!is_dir($directory)) {
         echo('Upload directory does not exist.');
     }
 	else
 	{
-
 		$files = array();
 
 		foreach (scandir($directory) as $file) {
@@ -128,10 +67,13 @@ if($_FILES["element_1"]["name"])
 
 		//var_dump($files);
 		
+		//Buttons
+		//echo "<br><div class=\"buttonOuter\"><div id=\"button\" class=\"flip\">Toggle Links</div><div id=\"button2\" class=\"flip2\">Toggle Descriptions</div></div></div>";
+		
 		foreach($files as $file)
 		{
 			$loc = $directory . $file;
-			echo $loc.'<br />';
+			echo '<div class="wrap"><h1 style="clear:both;">'.$file.'</h1>';
 			$myfile = fopen($loc, "r") or die("Unable to open file!");
 			$contents =  fread($myfile,filesize($loc));
 			fclose($myfile);
@@ -149,33 +91,47 @@ if($_FILES["element_1"]["name"])
 			foreach($fields as $key=>$value) { $fields_string .= $key.'='.$value.'&'; }
 			rtrim($fields_string, '&');
 
-			//open connection
-			$ch = curl_init();
-
-			//set the url, number of POST vars, POST data
-			curl_setopt($ch,CURLOPT_URL, $url);
-			curl_setopt($ch,CURLOPT_RETURNTRANSFER , 1);
-			curl_setopt($ch,CURLOPT_POST, count($fields));
-			curl_setopt($ch,CURLOPT_POSTFIELDS, $fields_string);
-
-			//execute post
-			$result = curl_exec($ch);
+			$result = CurlPost($url, $fields, $fields_string);
 			
-			$summaries = getTextBetweenTags('title', $result);
-			foreach( $summaries as $item )
-			{
-				echo $item.'<br /><br />';
-			}
+			$summaries = GetTextBetweenTags('title', $result);
 			
-			//echo "Result: ". $result . "</p>";
+			//for( $index = 0; $index < count($summaries); $index++ )
+			//{
+				echo '<h2>  --  '.$summaries[0].'</h2></div>';
+			//}
+			
+			$headings = GetTextBetweenTags('a', $result);
+			$textBlurbs = GetTextBetweenTags('font', $result);
+			$links = GetHrefAttributes($result);
+			
+			echo <<<EOT
+  <div id="tabs" class="tabs">
+  <ul>
+    <li><a href="#tabs-1">Headings</a></li>
+    <li><a href="#tabs-2">Page Text Excerpts</a></li>
+    <li><a href="#tabs-3">Full API Response</a></li>
+  </ul>
+  <div id="tabs-1">
+EOT;
 
-			if($debug)
+			echo "<h3>Headings</h3><div class=\"panelOuter\"><div class=\"panel\">";
+				for( $index = 0; $index < count($headings); $index++ )
+				{
+					echo '<a href="'.$links[$index].'" title="'.$headings[$index].'" target="_blank">'.$index.'</a> ';
+				} 
+			echo "</div></div></div>";
+			echo '<div id="tabs-2">';
+			echo "<h3>Page Text Excerpts</h3><div class=\"panel2\">";
+			for( $index = 0; $index < count($headings); $index++ )
 			{
-				//this is new debug output - standard output is simple number of results parsed from title tags
-				echo "Result: ". $result . "</p>";
+				echo '<a href="'.$links[$index].'" target="_blank" title="'.$textBlurbs[$index*3].$textBlurbs[$index*3 + 1].'">'.$index.'</a> ';
 			}
+			echo "</div></div>";
+			echo '<div id="tabs-3">';
+			echo "<h3>Full API Response</h3>";
+			echo '<textarea rows="5">'. $result.'</textarea></div>';
+			echo "</div>";
 
-			//close connection
 			curl_close($ch);
 		}
 	}
