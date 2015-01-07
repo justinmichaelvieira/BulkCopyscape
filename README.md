@@ -15,7 +15,7 @@ Requires [PHP](http://php.net) and [Curl](http://curl.haxx.se)
 
 Windows Users:
 
-* Give [the installer](https://github.com/angryrancor/BulkCopyscape/blob/master/windows-installer/Installer/InstallBulkCopyscape.exe) a try.
+* Give [the installer](https://github.com/angryrancor/BulkCopyscape/blob/master/windows-installer/Installer/InstallBulkCopyscape.exe) a try.  MD5 (InstallBulkCopyscape.exe) = 3eca09855a18ff676a4c968b4a519e20
 * Set {install dir}/uploads writeable by your webserver (or alternatively everyone)
 * Make sure Curl is in your system PATH.
 
