@@ -25,3 +25,4 @@ Other Platforms:
 * Inside this folder, make a "./uploads" folder.
 * Make sure you can upload to the uploads folder (e.g. run "chmod 0644 ./uploads" or similar permissions escalation).
 * Browse to SetupForm.php on your web host or local webserver url.
+* note - if there are problems with hard coded paths or configs, please email justin [at] rancorsoft.com or /u/angryrancor on reddit
