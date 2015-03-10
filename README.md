@@ -6,7 +6,12 @@ Bulk Copyscape is a script that utilizes Copyscape's API to by-pass the normal b
 ![Screenshot 1](http://bestbothosting.com/images/bcs1.png)
 
 This tool is great for busy SEO's and webmasters looking to protect their content from thieves or to clear up duplicate information from being found by Google.
-Designed by redditor [http://reddit.com/u/angryrancor](/u/angryrancor). Words by [http://reddit.com/u/fearthejew](/u/fearthejew)
+Designed by redditor [http://reddit.com/u/angryrancor](/u/angryrancor) of [Rancorsoft](http://rancorsoft.com). Words by [http://reddit.com/u/fearthejew](/u/fearthejew)
+
+Live Public Beta
+=============
+
+Just want to give Bulk Copyscape a try, without installing it yourself?  [Bulk Copy Tools](https://bulkcopytools.com) has what you need.
 
 Install Instructions
 =============
