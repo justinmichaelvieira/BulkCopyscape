@@ -11,6 +11,7 @@ Designed by redditor [http://reddit.com/u/angryrancor](/u/angryrancor) of [Ranco
 Live Public Beta
 =============
 
+![Screenshot 2](http://rancorsoft.com/images/logos/bulkcopytools_sm.png)
 Just want to give Bulk Copyscape a try, without installing it yourself?  [Bulk Copy Tools](https://bulkcopytools.com) has what you need.
 
 Install Instructions
