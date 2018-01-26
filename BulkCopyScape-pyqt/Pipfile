@@ -1,0 +1,20 @@
+[[source]]
+
+url = "https://pypi.python.org/simple"
+verify_ssl = true
+name = "pypi"
+
+
+[dev-packages]
+
+pytest-cov = "*"
+pytest-qt = "*"
+pytest = "*"
+
+
+[packages]
+
+pyyaml = "*"
+requests = "*"
+"pyqt5" = "*"
+pyqt-distutils = "*"

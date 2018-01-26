@@ -1,0 +1,16 @@
+{
+    "files": [
+        [
+            "resources/resources.qrc",
+            "bulkcopyscape"
+        ],
+        [
+            "resources/widgets/*.ui",
+            "bulkcopyscape/widgets"
+        ]
+    ],
+    "pyrcc": "pyrcc5",
+    "pyrcc_options": "",
+    "pyuic": "pyuic5",
+    "pyuic_options": "--from-imports"
+}
