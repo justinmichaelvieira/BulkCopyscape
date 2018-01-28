@@ -14,7 +14,6 @@ pytest = "*"
 
 [packages]
 
-pyyaml = "*"
 requests = "*"
-"pyqt5" = "*"
 pyqt-distutils = "*"
+"ruamel.yaml" = "*"
