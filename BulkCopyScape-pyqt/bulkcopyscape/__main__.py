@@ -3,6 +3,7 @@ import logging, sys
 from PyQt5.QtWidgets import QApplication
 import ruamel.yaml as yaml
 from .utilities.File import loadOrCreateFile
+from .utilities.CopyscapeApi import CopyscapeApi
 from .widgets import AboutWidget, ConfigForm, MainWindow, UploadWidget
 from . import __version__
 # from . import resources_rc  # noqa
@@ -10,7 +11,9 @@ from . import __version__
 app = None
 versionString = "Version: " + __version__
 logger = logging.getLogger()
-
+configFile = "config.yml"
+apiKeyEntry = "apiKey"
+apiUserEntry = "apiUser"
 
 def main():
     global app
@@ -18,22 +21,25 @@ def main():
     app.setOrganizationName("rancorsoft")
     app.setOrganizationDomain("rancorsoft.com")
     app.setApplicationName("BulkCopyScape")
+    csApi = CopyscapeApi()
     mainWindow = MainWindow.MainWindow()
     navToUploadScreen = lambda: mainWindow.pageStack.setCurrentIndex(0)
     navToAboutScreen = lambda: mainWindow.pageStack.setCurrentIndex(1)
     navToConfigScreen = lambda: mainWindow.pageStack.setCurrentIndex(2)
     aboutWidget = AboutWidget.AboutWidget(navToUploadScreen)
-    config = yaml.safe_load(loadOrCreateFile("config.yml"))  # Load config
-    configForm = ConfigForm.ConfigForm(config, navToUploadScreen)
+    config = yaml.safe_load(loadOrCreateFile(configFile))  # Load config
+    configForm = ConfigForm.ConfigForm(config, csApi, navToUploadScreen)
     uploadWidget = UploadWidget.UploadWidget(navToAboutScreen, navToConfigScreen)
 
     for widget in [uploadWidget, aboutWidget, configForm]:
         mainWindow.pageStack.addWidget(widget)
 
-    if config is None:
-        navToConfigScreen()
-    else:
+    if config:
         navToUploadScreen()
+        csApi.apiKey = config[apiKeyEntry]
+        csApi.uname = config[apiUserEntry]
+    else:
+        navToConfigScreen()
 
     mainWindow.showFullScreen()
     sys.exit(app.exec_())  # Without this, the script exits immediately.
