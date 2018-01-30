@@ -1,0 +1,24 @@
+QWidget {
+    background: #ffffff;
+    border-color: #BDBDBD;
+    color: #212121;
+}
+
+QWidget[accessibleName="header"] {
+    background: #303F9F;
+}
+
+QPushButton {
+    background: #448AFF;
+    border-radius: 4px;
+    border-color: #BDBDBD;
+    color: #ffffff;
+}
+
+QLineEdit[accessibleName="selectedFileEdit"] {
+    color: #757575;
+}
+
+QScrollArea {
+    background: #ffffff;
+}

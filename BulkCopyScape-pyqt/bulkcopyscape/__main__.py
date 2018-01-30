@@ -2,11 +2,11 @@
 import logging, sys
 from PyQt5.QtWidgets import QApplication
 import ruamel.yaml as yaml
-from .utilities.File import loadOrCreateFile
+from .utilities.File import loadOrCreateFile, getFileContents
 from .utilities.CopyscapeApi import CopyscapeApi
 from .widgets import AboutWidget, ConfigForm, MainWindow, UploadWidget
 from . import __version__
-# from . import resources_rc  # noqa
+from . import resources_rc  # noqa
 
 app = None
 versionString = "Version: " + __version__
@@ -15,12 +15,14 @@ configFile = "config.yml"
 apiKeyEntry = "apiKey"
 apiUserEntry = "apiUser"
 
+
 def main():
     global app
     app = QApplication(sys.argv)
     app.setOrganizationName("rancorsoft")
     app.setOrganizationDomain("rancorsoft.com")
     app.setApplicationName("BulkCopyScape")
+    app.setStyleSheet(getFileContents(":/css/style.css"))
     csApi = CopyscapeApi()
     mainWindow = MainWindow.MainWindow()
     navToUploadScreen = lambda: mainWindow.pageStack.setCurrentIndex(0)
@@ -29,7 +31,7 @@ def main():
     aboutWidget = AboutWidget.AboutWidget(navToUploadScreen)
     config = yaml.safe_load(loadOrCreateFile(configFile))  # Load config
     configForm = ConfigForm.ConfigForm(config, csApi, navToUploadScreen)
-    uploadWidget = UploadWidget.UploadWidget(navToAboutScreen, navToConfigScreen)
+    uploadWidget = UploadWidget.UploadWidget(csApi, navToAboutScreen, navToConfigScreen)
 
     for widget in [uploadWidget, aboutWidget, configForm]:
         mainWindow.pageStack.addWidget(widget)

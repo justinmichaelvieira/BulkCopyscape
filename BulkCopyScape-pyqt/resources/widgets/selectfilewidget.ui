@@ -44,6 +44,9 @@
      <height>21</height>
     </rect>
    </property>
+   <property name="accessibleName">
+    <string>selectedFileEdit</string>
+   </property>
    <property name="dragEnabled">
     <bool>true</bool>
    </property>
