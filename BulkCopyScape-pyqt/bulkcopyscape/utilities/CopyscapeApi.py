@@ -127,7 +127,7 @@ class CopyscapeApi(object):
             else:
                 response = urllib.request.urlopen(request)
             res = response.read()
-            return CopyscapeTree.fromstring(res)
+            return res
         except Exception:
             e = sys.exc_info()[1]
             print(e.args[0])

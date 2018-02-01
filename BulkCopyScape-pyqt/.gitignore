@@ -2,3 +2,4 @@
 /bulkcopyscape/resources_rc.py
 *.pyc
 config.yml
+bcs.db

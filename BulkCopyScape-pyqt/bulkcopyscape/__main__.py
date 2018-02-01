@@ -1,5 +1,10 @@
 """Startup script for the app"""
-import logging, sys
+# Todo: Either tab nav on top of app, or "fake tab nav" with buttons/widget
+# Todo: Resize widgets to screen on size change
+# Todo: Result history and display
+# Todo: 'Please wait' modal popup while sending to BCS
+import logging
+import sys
 from PyQt5.QtWidgets import QApplication
 import ruamel.yaml as yaml
 from .utilities.File import loadOrCreateFile, getFileContents
