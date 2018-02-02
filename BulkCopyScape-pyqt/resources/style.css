@@ -11,8 +11,13 @@ QWidget[accessibleName="header"] {
 QPushButton {
     background: #448AFF;
     border-radius: 4px;
-    border-color: #BDBDBD;
+    border: 2px #212121;
     color: #ffffff;
+}
+
+QPushButton::pressed {
+    background: #303F9F;
+    color: #448AFF;
 }
 
 QLineEdit[accessibleName="selectedFileEdit"] {
@@ -21,4 +26,16 @@ QLineEdit[accessibleName="selectedFileEdit"] {
 
 QScrollArea {
     background: #ffffff;
+}
+
+QToolButton[accessibleName="settingsBtn"] {
+    background: #303F9F;
+}
+
+QToolButton[accessibleName="aboutBtn"] {
+    background: #303F9F;
+}
+
+QLabel[accessibleName="titleBar"] {
+    background: #3F51B5;
 }

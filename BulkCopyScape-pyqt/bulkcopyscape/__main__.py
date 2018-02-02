@@ -1,7 +1,8 @@
 """Startup script for the app"""
-# Todo: Either tab nav on top of app, or "fake tab nav" with buttons/widget
+# Todo: Remove gap between nav widget and title
 # Todo: Result history and display
 # Todo: 'Please wait' modal popup while sending to BCS
+# Todo: Back button top nav bar for About widget, remove current btn
 import logging
 import sys
 from PyQt5.QtWidgets import QApplication
