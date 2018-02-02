@@ -1,6 +1,5 @@
 """Startup script for the app"""
 # Todo: Either tab nav on top of app, or "fake tab nav" with buttons/widget
-# Todo: Resize widgets to screen on size change
 # Todo: Result history and display
 # Todo: 'Please wait' modal popup while sending to BCS
 import logging
