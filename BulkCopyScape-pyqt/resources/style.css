@@ -4,10 +4,6 @@ QWidget {
     color: #212121;
 }
 
-QWidget[accessibleName="header"] {
-    background: #303F9F;
-}
-
 QPushButton {
     background: #448AFF;
     border-radius: 4px;
@@ -28,14 +24,16 @@ QScrollArea {
     background: #ffffff;
 }
 
-QToolButton[accessibleName="settingsBtn"] {
+QToolButton {
     background: #303F9F;
+    border: 0;
 }
 
-QToolButton[accessibleName="aboutBtn"] {
+QFrame[accessibleName="navHeaderFrame"] {
     background: #303F9F;
 }
 
 QLabel[accessibleName="titleBar"] {
     background: #3F51B5;
+    color: #FFFFFF;
 }
