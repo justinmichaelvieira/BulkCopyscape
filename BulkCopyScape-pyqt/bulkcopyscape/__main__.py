@@ -1,7 +1,6 @@
 """Startup script for the app"""
-# Todo: Remove gap between nav widget and title
-# Todo: Result history and display
-# Todo: 'Please wait' modal popup while sending to BCS
+# Todo: Result history and display, columns = datetime (default sort), filename, Results button
+# Todo: Should be updating the modal text after each check, and enabling a "close" button at the end
 # Todo: Back button top nav bar for About widget, remove current btn
 import logging
 import sys
