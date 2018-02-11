@@ -1,4 +1,4 @@
-/bulkcopyscape/widgets/*
+/bulkcopyscape/widgets/*_ui.py
 /bulkcopyscape/resources_rc.py
 *.pyc
 config.yml
