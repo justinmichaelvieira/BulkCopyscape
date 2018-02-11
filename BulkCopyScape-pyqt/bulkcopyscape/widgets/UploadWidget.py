@@ -10,6 +10,7 @@ from .uploadwidget_ui import Ui_Form
 class UploadWidget(QWidget, Ui_Form):
     def __init__(self, csApi, aboutFormCb, configFormCb):
         super(self.__class__, self).__init__()
+        self._db = Db()
         self._csApi = csApi
         self._selectFileWidgets = []
         self._numFiles = 0
@@ -49,20 +50,20 @@ class UploadWidget(QWidget, Ui_Form):
     def completed(self):
         self._loadingForm.hide()
 
-    @pyqtSlot(int)
-    def updateProcessed(self, numProcessed):
+    @pyqtSlot(str, int)
+    def updateProcessed(self, response, numProcessed):
         self._loadingForm.setText(
             "Uploading Files - {filesDone} of {numFiles} complete.".format(
                 filesDone=numProcessed, numFiles=self._numFiles))
+        self._db.insertResult(response)
 
 
 class CheckThread(QThread):
     completed = pyqtSignal()
-    updateProcessed = pyqtSignal(int)
+    updateProcessed = pyqtSignal(str, int)
 
     def __init__(self, files, csApi, updatedCb, completedCb):
         QThread.__init__(self)
-        self._db = Db()
         self._files = files
         self._csApi = csApi
         self.completed.connect(completedCb)
@@ -72,14 +73,13 @@ class CheckThread(QThread):
     def checkAndSaveResults(self, fname):
         with open(fname, "r") as f:
             contents = f.read()
-            response = self._csApi.copyscape_api_text_search_internet(contents, "UTF-8")
-            self._db.insertResult(str(response))
+            return self._csApi.copyscape_api_text_search_internet(contents, "UTF-8")
 
     def run(self):
         filesDone = 0
         for fname in self._files:
-            self.checkAndSaveResults(fname)
+            response = self.checkAndSaveResults(fname)
             filesDone += 1
-            self.updateProcessed.emit(filesDone)
+            self.updateProcessed.emit(str(response), filesDone)
             self.sleep(1)
         self.completed.emit()
