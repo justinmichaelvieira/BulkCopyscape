@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>129</width>
+    <width>194</width>
     <height>32</height>
    </rect>
   </property>
@@ -18,7 +18,7 @@
   </property>
   <property name="minimumSize">
    <size>
-    <width>100</width>
+    <width>150</width>
     <height>32</height>
    </size>
   </property>
@@ -107,6 +107,33 @@
         </property>
         <property name="text">
          <string>Settings</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QToolButton" name="resultsButton">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="MinimumExpanding" vsizetype="Maximum">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>50</width>
+          <height>32</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>14</pointsize>
+         </font>
+        </property>
+        <property name="accessibleName">
+         <string>resultsBtn</string>
+        </property>
+        <property name="text">
+         <string>Results</string>
         </property>
        </widget>
       </item>

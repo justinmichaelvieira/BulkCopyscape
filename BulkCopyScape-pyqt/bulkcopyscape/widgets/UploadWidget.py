@@ -8,7 +8,7 @@ from .uploadwidget_ui import Ui_Form
 
 
 class UploadWidget(QWidget, Ui_Form):
-    def __init__(self, csApi, aboutFormCb, configFormCb):
+    def __init__(self, csApi, aboutFormCb, resultsFormCb, configFormCb):
         super(self.__class__, self).__init__()
         self._db = Db()
         self._csApi = csApi
@@ -21,6 +21,8 @@ class UploadWidget(QWidget, Ui_Form):
         self.titleHeader.title = "Check Files"
         self.navHeader.aboutButton.clicked.connect(aboutFormCb)
         self.navHeader.aboutButton.setIcon(QIcon(":/icons/about.png"))
+        self.navHeader.resultsButton.clicked.connect(resultsFormCb)
+        self.navHeader.resultsButton.setIcon(QIcon(":/icons/results.png"))
         self.navHeader.settingsButton.clicked.connect(configFormCb)
         self.navHeader.settingsButton.setIcon(QIcon(":/icons/settings.png"))
         self.runTestsButton.clicked.connect(self.runTests)

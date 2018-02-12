@@ -8,7 +8,7 @@ from PyQt5.QtWidgets import QApplication
 import ruamel.yaml as yaml
 from .utilities.File import loadOrCreateFile, getFileContents
 from .utilities.CopyscapeApi import CopyscapeApi
-from .widgets import AboutWidget, ConfigForm, MainWindow, UploadWidget
+from .widgets import AboutWidget, ConfigForm, MainWindow, ResultsHistory, UploadWidget
 from . import __version__
 from . import resources_rc  # noqa
 
@@ -32,12 +32,14 @@ def main():
     navToUploadScreen = lambda: mainWindow.pageStack.setCurrentIndex(0)
     navToAboutScreen = lambda: mainWindow.pageStack.setCurrentIndex(1)
     navToConfigScreen = lambda: mainWindow.pageStack.setCurrentIndex(2)
+    navToResultsScreen = lambda: mainWindow.pageStack.setCurrentIndex(3)
     aboutWidget = AboutWidget.AboutWidget(navToUploadScreen)
+    resultsWidget = ResultsHistory.ResultsHistory(navToUploadScreen)
     config = yaml.safe_load(loadOrCreateFile(configFile))  # Load config
     configForm = ConfigForm.ConfigForm(config, csApi, navToUploadScreen)
-    uploadWidget = UploadWidget.UploadWidget(csApi, navToAboutScreen, navToConfigScreen)
+    uploadWidget = UploadWidget.UploadWidget(csApi, navToAboutScreen, navToResultsScreen,  navToConfigScreen)
 
-    for widget in [uploadWidget, aboutWidget, configForm]:
+    for widget in [uploadWidget, aboutWidget, configForm, resultsWidget]:
         mainWindow.pageStack.addWidget(widget)
 
     if config:
