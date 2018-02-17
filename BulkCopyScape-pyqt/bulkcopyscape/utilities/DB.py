@@ -6,6 +6,9 @@ class Db(object):
     def __init__(self):
         self.db = dataset.connect('sqlite:///bcs.db')
 
-    def insertResult(self, resultText):
+    def insertResult(self, fileName, resultText):
         table = self.db['results']
-        table.insert(dict(result=resultText, timestamp=datetime.datetime.now()))
+        table.insert(dict(filename=fileName, result=resultText, timestamp=datetime.datetime.now()))
+
+    def getResults(self):
+        return self.db['results'].all()

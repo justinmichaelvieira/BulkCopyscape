@@ -37,7 +37,9 @@ def main():
     resultsWidget = ResultsHistory.ResultsHistory(navToUploadScreen)
     config = yaml.safe_load(loadOrCreateFile(configFile))  # Load config
     configForm = ConfigForm.ConfigForm(config, csApi, navToUploadScreen)
-    uploadWidget = UploadWidget.UploadWidget(csApi, navToAboutScreen, navToResultsScreen,  navToConfigScreen)
+    uploadWidget = UploadWidget.UploadWidget(csApi, navToAboutScreen,
+                                             navToResultsScreen,  navToConfigScreen,
+                                             resultsWidget.populateResults)
 
     for widget in [uploadWidget, aboutWidget, configForm, resultsWidget]:
         mainWindow.pageStack.addWidget(widget)
