@@ -16,6 +16,10 @@ QPushButton::pressed {
     color: #448AFF;
 }
 
+QToolButton {
+    color: #FFFFFF;
+}
+
 QLineEdit[accessibleName="selectedFileEdit"] {
     color: #757575;
 }

@@ -33,13 +33,12 @@ def main():
     navToAboutScreen = lambda: mainWindow.pageStack.setCurrentIndex(1)
     navToConfigScreen = lambda: mainWindow.pageStack.setCurrentIndex(2)
     navToResultsScreen = lambda: mainWindow.pageStack.setCurrentIndex(3)
-    aboutWidget = AboutWidget.AboutWidget(navToUploadScreen)
-    resultsWidget = ResultsHistory.ResultsHistory(navToUploadScreen)
+    navCallbacks = [navToAboutScreen, navToResultsScreen, navToConfigScreen, navToUploadScreen]
+    aboutWidget = AboutWidget.AboutWidget(navCallbacks)
+    resultsWidget = ResultsHistory.ResultsHistory(navCallbacks)
     config = yaml.safe_load(loadOrCreateFile(configFile))  # Load config
-    configForm = ConfigForm.ConfigForm(config, csApi, navToUploadScreen)
-    uploadWidget = UploadWidget.UploadWidget(csApi, navToAboutScreen,
-                                             navToResultsScreen,  navToConfigScreen,
-                                             resultsWidget.populateResults)
+    configForm = ConfigForm.ConfigForm(config, csApi, navCallbacks)
+    uploadWidget = UploadWidget.UploadWidget(csApi, navCallbacks, resultsWidget.populateResults)
 
     for widget in [uploadWidget, aboutWidget, configForm, resultsWidget]:
         mainWindow.pageStack.addWidget(widget)

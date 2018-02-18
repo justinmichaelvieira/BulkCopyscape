@@ -1,17 +1,18 @@
+import html
 import os
 
 from PyQt5.QtCore import QThread, pyqtSignal, pyqtSlot
-from PyQt5.QtGui import QIcon
 from PyQt5.QtWidgets import QWidget, QVBoxLayout
 
 from ..utilities.DB import Db
+from ..utilities.Navigation import setupHeaders
 from .SelectFileWidget import SelectFileWidget
 from .LoadingForm import LoadingForm
 from .uploadwidget_ui import Ui_Form
 
 
 class UploadWidget(QWidget, Ui_Form):
-    def __init__(self, csApi, aboutFormCb, resultsFormCb, configFormCb, popResHistCb):
+    def __init__(self, csApi, navCallbacks, popResHistCb):
         super(self.__class__, self).__init__()
         self._db = Db()
         self._csApi = csApi
@@ -22,13 +23,7 @@ class UploadWidget(QWidget, Ui_Form):
         self.setupUi(self)
         self._scrollLayout = QVBoxLayout()
         self.scrollAreaWidgetContents.setLayout(self._scrollLayout)
-        self.titleHeader.title = "Check Files"
-        self.navHeader.aboutButton.clicked.connect(aboutFormCb)
-        self.navHeader.aboutButton.setIcon(QIcon(":/icons/about.png"))
-        self.navHeader.resultsButton.clicked.connect(resultsFormCb)
-        self.navHeader.resultsButton.setIcon(QIcon(":/icons/results.png"))
-        self.navHeader.settingsButton.clicked.connect(configFormCb)
-        self.navHeader.settingsButton.setIcon(QIcon(":/icons/settings.png"))
+        setupHeaders(self, "Check Files", navCallbacks)
         self.runTestsButton.clicked.connect(self.runTests)
         self.addSelectFileWidget()
 
@@ -62,7 +57,7 @@ class UploadWidget(QWidget, Ui_Form):
         self._loadingForm.setText(
             "Uploading Files - {filesDone} of {numFiles} complete.".format(
                 filesDone=numProcessed, numFiles=self._numFiles))
-        self._db.insertResult(os.path.basename(fname), response)
+        self._db.insertResult(os.path.basename(fname), html.unescape(response))
 
 
 class CheckThread(QThread):
