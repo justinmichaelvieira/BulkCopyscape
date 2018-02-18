@@ -1,5 +1,4 @@
-# TODO: Widget that shows all Results from one query and query stats (QueryResults)
-# and Widget that represents one result match (SingleResultMatch) for repeating in a single QueryResults
+# TODO: Integrate CheckQueryResult result match SingleResultMatch
 from PyQt5.QtWidgets import QWidget
 
 from ..utilities.DB import Db
