@@ -1,9 +1,9 @@
 import xml.etree.cElementTree as etree
 
-from PyQt5.QtGui import QGuiApplication
 from PyQt5.QtWidgets import QWidget, QVBoxLayout
 
 from ..utilities.DB import Db
+from ..utilities.Size import fullScreenSize
 from .SingleResultMatch import SingleResultMatch
 from .checkqueryresult_ui import Ui_Form
 
@@ -12,7 +12,7 @@ class CheckQueryResult(QWidget, Ui_Form):
     def __init__(self, resultId, parent):
         super(self.__class__, self).__init__(parent)
         self.setupUi(self)
-        fullSize = self.fullScreenSize()
+        fullSize = fullScreenSize()
         self.resize(fullSize.width(), fullSize.height())
         self.closeBtn.clicked.connect(lambda: self.hide())
         row = Db().getResultById(resultId)
@@ -26,12 +26,7 @@ class CheckQueryResult(QWidget, Ui_Form):
         self.resultsScrollContents.setLayout(self._scrollLayout)
         for result in root.findall('result'):
             newSrm = SingleResultMatch(result.find('index').text, result.find('url').text,
-                                       result.find('title').text, result.find('htmlsnippet').text,
+                                       result.find('title').text, result.find('textsnippet').text,
                                        self.resultsScrollContents)
             self._scrollLayout.addWidget(newSrm)
             self._srmList.append(newSrm)
-
-    def fullScreenSize(self):
-        screen = QGuiApplication.primaryScreen()
-        geometry = screen.geometry()
-        return geometry
