@@ -12,3 +12,6 @@ class Db(object):
 
     def getResults(self):
         return self.db['results'].all()
+
+    def getResultById(self, resultId):
+        return self.db['results'].find_one(id=resultId)
