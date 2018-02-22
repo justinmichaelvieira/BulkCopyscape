@@ -1,5 +1,7 @@
 /bulkcopyscape/widgets/*_ui.py
 /bulkcopyscape/resources_rc.py
+/build
+/dist
 *.pyc
 config.yml
 bcs.db
