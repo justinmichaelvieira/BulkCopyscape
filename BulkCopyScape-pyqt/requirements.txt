@@ -1,0 +1,4 @@
+requests>="2.18.4"
+pyqt-distutils>="0.7.3"
+ruamel.yaml>="0.15.35"
+dataset>="1.0.6"

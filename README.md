@@ -3,10 +3,16 @@ Bulk CopyScape
 
 Bulk Copyscape is a script that utilizes Copyscape's API to by-pass the normal bulk upload queue, allowing you to quickly check websites for plagiarism or duplicate content in a matter of moments - for free!
 
-![Screenshot 1](http://bestbothosting.com/images/bcs1.png)
-
 This tool is great for busy SEO's and webmasters looking to protect their content from thieves or to clear up duplicate information from being found by Google.
 Designed by redditor [http://reddit.com/u/angryrancor](/u/angryrancor) of [Rancorsoft](http://rancorsoft.com). Words by [http://reddit.com/u/fearthejew](/u/fearthejew)
+
+![Screen 1](https://raw.githubusercontent.com/angryrancor/bulkcopyscape/master/BulkCopyScape-pyqt/ss1.png)
+
+![Screen 2](https://raw.githubusercontent.com/angryrancor/bulkcopyscape/master/BulkCopyScape-pyqt/ss2.png)
+
+![Screen 3](https://raw.githubusercontent.com/angryrancor/bulkcopyscape/master/BulkCopyScape-pyqt/ss3.png)
+
+![Screen 4](https://raw.githubusercontent.com/angryrancor/bulkcopyscape/master/BulkCopyScape-pyqt/ss4.png)
 
 Desktop/Mobile App - Install instructions
 =============
@@ -15,15 +21,14 @@ Requires [Python3](https://www.python.org/downloads/) and [Qt](https://www.qt.io
 
 * Install [Python3](https://www.python.org/downloads/) and [Qt](https://www.qt.io/download) if you don't already have them.
 * Download the repository and open a shell prompt at the BulkCopyScape-pyqt folder.
-* Type `pip install pipenv` to install the pipenv environment manager
-* Type `pipenv install` to install the libraries used by the app
-* Type `pipenv run python bulkcopyscape` to run the app!
+* Type `pip install -r requirements.txt` to install the libraries used by the app.
+* Type `python3 -m bulkcopyscape` to run the app!
 
 
 Web app - Live Public Beta
 =============
 
-![Screenshot 2](http://rancorsoft.com/images/logos/bulkcopytools_sm.png)
+![Web app screenshot](http://rancorsoft.com/images/logos/bulkcopytools_sm.png)
 
 Just want to give Bulk Copyscape a try, without installing it yourself?  [Bulk Copy Tools](https://bulkcopytools.com) has what you need.
 

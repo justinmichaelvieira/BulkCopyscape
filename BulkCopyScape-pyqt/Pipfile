@@ -10,6 +10,7 @@ name = "pypi"
 pytest-cov = "*"
 pytest-qt = "*"
 pytest = "*"
+pyinstaller = "*"
 
 
 [packages]
@@ -18,4 +19,3 @@ requests = "*"
 pyqt-distutils = "*"
 "ruamel.yaml" = "*"
 dataset = "*"
-pyinstaller = "*"
