@@ -6,13 +6,13 @@ Bulk Copyscape is a script that utilizes Copyscape's API to by-pass the normal b
 This tool is great for busy SEO's and webmasters looking to protect their content from thieves or to clear up duplicate information from being found by Google.
 Designed by redditor [http://reddit.com/u/angryrancor](/u/angryrancor) of [Rancorsoft](http://rancorsoft.com). Words by [http://reddit.com/u/fearthejew](/u/fearthejew)
 
-![Screen 1](BulkCopyScape-pyqt/ss1.png)
+![Screen 1](ss1.png)
 
-![Screen 2](BulkCopyScape-pyqt/ss2.png)
+![Screen 2](ss2.png)
 
-![Screen 3](BulkCopyScape-pyqt/ss3.png)
+![Screen 3](ss3.png)
 
-![Screen 4](BulkCopyScape-pyqt/ss4.png)
+![Screen 4](ss4.png)
 
 Desktop/Mobile App - Install instructions
 =============
