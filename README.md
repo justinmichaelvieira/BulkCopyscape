@@ -17,7 +17,7 @@ Designed by redditor [http://reddit.com/u/angryrancor](/u/angryrancor) of [Ranco
 Desktop/Mobile App - Install instructions
 =============
 
-Requires [Python3](https://www.python.org/downloads/) and [Qt](https://www.qt.io/download). The open source version of Qt is fine, and recommended - if you don't already have it.
+Requires [Python3](https://www.python.org/downloads/) and [Qt](https://www.qt.io/download). The free open source version of Qt is fine.
 
 * Install [Python3](https://www.python.org/downloads/) and [Qt](https://www.qt.io/download) if you don't already have them.
 * Download the repository and open a shell prompt at the BulkCopyScape-pyqt folder.
