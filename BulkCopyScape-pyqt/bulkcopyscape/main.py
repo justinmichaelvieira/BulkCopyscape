@@ -1,12 +1,11 @@
 """Startup script for the app"""
-# Todo: Result history and display, columns = datetime (default sort), filename, Results button
-# Todo: Should be updating the modal text after each check, and enabling a "close" button at the end
-# Todo: Back button top nav bar for About widget, remove current btn
 import logging
 import sys
-from PyQt5.QtWidgets import QApplication
 import ruamel.yaml as yaml
-from .utilities.File import loadOrCreateFile, getFileContents
+
+from PyQt5.QtWidgets import QApplication
+
+from .utilities.File import loadOrCreateFile, getFileContents, resource_path
 from .utilities.CopyscapeApi import CopyscapeApi
 from .widgets import AboutWidget, ConfigForm, MainWindow, ResultsHistory, UploadWidget
 from . import __version__
@@ -15,7 +14,7 @@ from . import resources_rc  # noqa
 app = None
 versionString = "Version: " + __version__
 logger = logging.getLogger()
-configFile = "config.yml"
+configFile = resource_path("config.yml")
 apiKeyEntry = "apiKey"
 apiUserEntry = "apiUser"
 

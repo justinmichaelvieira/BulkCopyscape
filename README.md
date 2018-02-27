@@ -8,21 +8,33 @@ Bulk Copyscape is a script that utilizes Copyscape's API to by-pass the normal b
 This tool is great for busy SEO's and webmasters looking to protect their content from thieves or to clear up duplicate information from being found by Google.
 Designed by redditor [http://reddit.com/u/angryrancor](/u/angryrancor) of [Rancorsoft](http://rancorsoft.com). Words by [http://reddit.com/u/fearthejew](/u/fearthejew)
 
-Live Public Beta
+Desktop/Mobile App - Install instructions
+=============
+
+Requires [Python3](https://www.python.org/downloads/) and [Qt](https://www.qt.io/download). The open source version of Qt is fine, and recommended - if you don't already have it.
+
+* Install [Python3](https://www.python.org/downloads/) and [Qt](https://www.qt.io/download) if you don't already have them.
+* Download the repository and open a shell prompt at the BulkCopyScape-pyqt folder.
+* Type `pip install pipenv` to install the pipenv environment manager
+* Type `pipenv install` to install the libraries used by the app
+* Type `pipenv run python bulkcopyscape` to run the app!
+
+
+Web app - Live Public Beta
 =============
 
 ![Screenshot 2](http://rancorsoft.com/images/logos/bulkcopytools_sm.png)
 
 Just want to give Bulk Copyscape a try, without installing it yourself?  [Bulk Copy Tools](https://bulkcopytools.com) has what you need.
 
-Install Instructions
+Web App - Install Instructions
 =============
 
 Requires [PHP](http://php.net) and [Curl](http://curl.haxx.se)
 
 Windows Users:
 
-* Give [the installer](https://github.com/angryrancor/BulkCopyscape/blob/master/windows-installer/Installer/InstallBulkCopyscape.exe) a try.  MD5 (InstallBulkCopyscape.exe) = 3eca09855a18ff676a4c968b4a519e20
+* Give [the installer](https://github.com/angryrancor/BulkCopyscape/blob/master/BulkCopyScape-Web/windows-installer/Installer/InstallBulkCopyscape.exe) a try.  MD5 (InstallBulkCopyscape.exe) = 3eca09855a18ff676a4c968b4a519e20
 * Set {install dir}/uploads writeable by your webserver (or alternatively everyone)
 * Make sure Curl is in your system PATH.
 

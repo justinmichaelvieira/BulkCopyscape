@@ -1,4 +1,6 @@
 # -*- mode: python -*-
+import os
+import platform
 
 block_cipher = None
 
@@ -6,8 +8,8 @@ block_cipher = None
 a = Analysis(['PyInstallerStub.py'],
              pathex=['/Users/justinvieira/BulkCopyscape/BulkCopyScape-pyqt'],
              binaries=[],
-             datas=[],
-             hiddenimports=[],
+             datas=[('resources/resources.qrc', './resources'), ('bcs.db', '.'), ('config.yml', '.')],
+             hiddenimports=['dataset'],
              hookspath=[],
              runtime_hooks=[],
              excludes=[],
@@ -31,3 +33,12 @@ coll = COLLECT(exe,
                strip=False,
                upx=True,
                name='bulkcopyscape')
+
+
+if platform.system() == 'Darwin':
+    info_plist = {'addition_prop': 'additional_value'}
+    app = BUNDLE(exe,
+                 name='Foobar.app',
+                 bundle_identifier=None,
+                 info_plist=info_plist
+)
