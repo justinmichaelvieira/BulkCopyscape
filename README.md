@@ -20,7 +20,8 @@ Desktop/Mobile App - Install instructions
 Requires [Python3](https://www.python.org/downloads/) and [Qt](https://www.qt.io/download). The free open source version of Qt is fine.
 
 * Install [Python3](https://www.python.org/downloads/) and [Qt](https://www.qt.io/download) if you don't already have them.
-* Download the repository and open a shell prompt at the BulkCopyScape-pyqt folder.
+* Download the repository via [git](https://github.com/angryrancor/BulkCopyscape.git) or [zip file](https://github.com/angryrancor/BulkCopyscape/archive/master.zip). If using the zip file, extract it.
+* Open a cmd/shell prompt at the BulkCopyScape-pyqt folder.
 * Type `pip install -r requirements.txt` to install the libraries used by the app.
 * Type `python3 -m bulkcopyscape` to run the app!
 
