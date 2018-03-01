@@ -1,4 +1,7 @@
 """Startup script for the app"""
+# Todo: Reset files after check
+# Todo: Direct link to View Results or Check More
+# Todo: Show number of matches next to filename
 import logging
 import sys
 import ruamel.yaml as yaml
