@@ -6,6 +6,7 @@ from PyQt5.QtWidgets import QWidget, QVBoxLayout
 
 from ..utilities.DB import Db
 from ..utilities.Navigation import setupHeaders
+from ..utilities.Layout import clearAllWidgets
 from .SelectFileWidget import SelectFileWidget
 from .LoadingForm import LoadingForm
 from .uploadwidget_ui import Ui_Form
@@ -49,6 +50,10 @@ class UploadWidget(QWidget, Ui_Form):
 
     @pyqtSlot()
     def completed(self):
+        clearAllWidgets(self._scrollLayout)
+        self._selectFileWidgets = []
+        self._numFiles = 0
+        self.addSelectFileWidget()
         self._refreshHistory()
         self._loadingForm.hide()
 
