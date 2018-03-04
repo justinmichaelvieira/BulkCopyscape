@@ -24,6 +24,6 @@ class ConfigForm(QWidget, Ui_Form):
     def saveEnteredValues(self):
         uname = self.usernameEdit.text()
         apiKey = self.apiKeyEdit.text()
-        self._db.upsertConfig(uname, apiKey)
+        self._db.saveConfig(uname, apiKey)
         self._csApi.uname = uname
         self._csApi.apiKey = apiKey

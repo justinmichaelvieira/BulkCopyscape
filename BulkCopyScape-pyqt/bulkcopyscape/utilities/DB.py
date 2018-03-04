@@ -16,7 +16,7 @@ class Db(object):
     def getResultById(self, resultId):
         return self.db['results'].find_one(id=resultId)
 
-    def upsertConfig(self, apiUser, apiKey):
+    def saveConfig(self, apiUser, apiKey):
         table = self.db['config']
         table.delete()
         table.insert(dict(apiUser=apiUser, apiKey=apiKey))
