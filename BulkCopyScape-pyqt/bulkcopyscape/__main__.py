@@ -4,12 +4,12 @@
 # Todo: Show number of matches next to filename
 import logging
 import sys
-import ruamel.yaml as yaml
 
 from PyQt5.QtWidgets import QApplication
 
-from .utilities.File import loadOrCreateFile, getFileContents, resource_path
+from .utilities.File import getFileContents, resource_path
 from .utilities.CopyscapeApi import CopyscapeApi
+from .utilities.DB import Db
 from .widgets import AboutWidget, ConfigForm, MainWindow, ResultsHistory, UploadWidget
 from . import __version__
 from . import resources_rc  # noqa
@@ -29,6 +29,7 @@ def main():
     app.setOrganizationDomain("rancorsoft.com")
     app.setApplicationName("BulkCopyScape")
     app.setStyleSheet(getFileContents(":/css/style.css"))
+    db = Db()
     csApi = CopyscapeApi()
     mainWindow = MainWindow.MainWindow()
     navToUploadScreen = lambda: mainWindow.pageStack.setCurrentIndex(0)
@@ -38,7 +39,7 @@ def main():
     navCallbacks = [navToAboutScreen, navToResultsScreen, navToConfigScreen, navToUploadScreen]
     aboutWidget = AboutWidget.AboutWidget(navCallbacks)
     resultsWidget = ResultsHistory.ResultsHistory(navCallbacks)
-    config = yaml.safe_load(loadOrCreateFile(configFile))  # Load config
+    config = db.getConfig()  # Load config
     configForm = ConfigForm.ConfigForm(config, csApi, navCallbacks)
     uploadWidget = UploadWidget.UploadWidget(csApi, navCallbacks, resultsWidget.populateResults)
 
@@ -47,8 +48,8 @@ def main():
 
     if config:
         navToUploadScreen()
-        csApi.apiKey = config[apiKeyEntry]
-        csApi.uname = config[apiUserEntry]
+        csApi.apiKey = config['apiKey']
+        csApi.uname = config['apiUser']
     else:
         navToConfigScreen()
 
