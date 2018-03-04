@@ -3,6 +3,4 @@
 /build
 /dist
 *.pyc
-config.yml
-bcs.db
 *.spec
