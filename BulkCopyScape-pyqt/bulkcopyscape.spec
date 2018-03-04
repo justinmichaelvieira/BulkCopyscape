@@ -1,6 +1,5 @@
 # -*- mode: python -*-
 import platform
-from pathlib import Path
 
 block_cipher = None
 
@@ -8,7 +7,7 @@ block_cipher = None
 a = Analysis(['PyInstallerStub.py'],
              pathex=['/Users/justinvieira/BulkCopyscape/BulkCopyScape-pyqt'],
              binaries=[],
-             datas=[('resources/resources.qrc', './resources'), ('bcs.db', str(Path.home()))],
+             datas=[('resources/resources.qrc', './resources')],
              hiddenimports=['dataset'],
              hookspath=[],
              runtime_hooks=[],
