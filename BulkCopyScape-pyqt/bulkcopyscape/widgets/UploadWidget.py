@@ -46,7 +46,7 @@ class UploadWidget(QWidget, Ui_Form):
                 filesList.append(fname)
         self._numFiles = len(filesList)
         self._loadingForm.setText("Uploading Files - 0 of {numFiles} complete.".format(numFiles=self._numFiles))
-        CheckThread(filesList, self._csApi, self.updateProcessed, self.completed)
+        self._checkThread = CheckThread(filesList, self._csApi, self.updateProcessed, self.completed)
 
     @pyqtSlot()
     def completed(self):

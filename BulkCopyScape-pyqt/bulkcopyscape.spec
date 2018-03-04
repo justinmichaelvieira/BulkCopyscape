@@ -37,7 +37,7 @@ coll = COLLECT(exe,
 if platform.system() == 'Darwin':
     info_plist = {'addition_prop': 'additional_value'}
     app = BUNDLE(exe,
-                 name='Foobar.app',
+                 name='BulkCopyScape.app',
                  bundle_identifier=None,
                  info_plist=info_plist
 )
