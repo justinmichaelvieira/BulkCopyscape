@@ -1,6 +1,6 @@
 # TODO: Integrate CheckQueryResult result match SingleResultMatch
 from PyQt5.QtWidgets import QWidget, QListWidgetItem
-from PyQt5.QtCore import Qt
+from PyQt5.QtCore import Qt, pyqtSlot
 
 from ..utilities.DB import Db
 from ..utilities.Navigation import setupHeaders
@@ -17,9 +17,9 @@ class ResultsHistory(QWidget, Ui_Form):
         self._singleResultMatch = None
         self.populateResults()
         setupHeaders(self, "Results", navCallbacks)
-        self.resultsList.itemClicked.connect(self.onItemSelected)
 
-    def onItemSelected(self, item):
+    @pyqtSlot(QListWidgetItem)
+    def on_resultsList_itemClicked(self, item):
         self._checkQueryResult = CheckQueryResult(item.data(Qt.UserRole), self)
         self._checkQueryResult.show()
 
