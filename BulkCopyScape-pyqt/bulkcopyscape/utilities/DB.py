@@ -1,10 +1,10 @@
 import dataset
 import datetime
-
+from pathlib import Path
 
 class Db(object):
     def __init__(self):
-        self.db = dataset.connect('sqlite:///bcs.db')
+        self.db = dataset.connect('sqlite:///{homePath}/bcs.db'.format(homePath=str(Path.home())))
 
     def insertResult(self, fileName, resultText):
         table = self.db['results']
