@@ -1,6 +1,7 @@
 """Startup script for the app"""
 # Todo: Direct link to View Results or Check More
 # Todo: Show number of matches next to filename
+# Todo: Lines in nav under the currently selected form
 import logging
 import sys
 
