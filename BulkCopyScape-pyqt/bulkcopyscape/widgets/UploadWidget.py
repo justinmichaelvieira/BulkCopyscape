@@ -108,5 +108,6 @@ class CheckThread(QThread):
             else:
                 self.errored.emit(self.findBetween(response, "<error>", "</error>"))
                 self.sleep(5)
-                break
+                if "API key" in response:  # If the username or API key is the problem, stop
+                    break
         self.completed.emit()

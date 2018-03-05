@@ -17,7 +17,7 @@ class CheckQueryResult(QWidget, Ui_Form):
         self.closeBtn.clicked.connect(lambda: self.hide())
         row = Db().getResultById(resultId)
         self.fnameLbl.setText(row['filename'])
-        subbed = row['result'][2:].replace('\\t', '').replace('\\n', '').replace('&', '&#038;').strip('\'')
+        subbed = row['result'][2:].replace('\\t', '').replace('\\n', '').replace(' < ', '').replace('&', '&#038;').strip('\'')
         root = etree.fromstring(subbed)
         self.numWordsLbl.setText(root.find('querywords').text)
         self.numMatchesLbl.setText(root.find('count').text)
