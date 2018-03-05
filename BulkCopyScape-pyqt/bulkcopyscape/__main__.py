@@ -1,6 +1,5 @@
 """Startup script for the app"""
 # Todo: Upload installers/app file
-# Todo: Setup gittip
 # Todo: Post in r/SEO
 # Todo: Direct link to View Results or Check More
 # Todo: Show number of matches next to filename
