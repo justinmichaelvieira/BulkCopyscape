@@ -1,6 +1,4 @@
 """Startup script for the app"""
-# Todo: Warning when API call fails
-# Todo: Fix None object being stored when API call fails (crashes app on trying to read)
 # Todo: Upload installers/app file
 # Todo: Setup gittip
 # Todo: Post in r/SEO

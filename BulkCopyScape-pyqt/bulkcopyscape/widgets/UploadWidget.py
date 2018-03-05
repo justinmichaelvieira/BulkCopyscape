@@ -46,7 +46,8 @@ class UploadWidget(QWidget, Ui_Form):
                 filesList.append(fname)
         self._numFiles = len(filesList)
         self._loadingForm.setText("Uploading Files - 0 of {numFiles} complete.".format(numFiles=self._numFiles))
-        self._checkThread = CheckThread(filesList, self._csApi, self.updateProcessed, self.completed)
+        self._checkThread = CheckThread(
+            filesList, self._csApi, self.updateProcessed, self.completed, self.errorEncountered)
 
     @pyqtSlot()
     def completed(self):
@@ -64,17 +65,23 @@ class UploadWidget(QWidget, Ui_Form):
                 filesDone=numProcessed, numFiles=self._numFiles))
         self._db.insertResult(os.path.basename(fname), html.unescape(response))
 
+    @pyqtSlot(str)
+    def errorEncountered(self, errorMsg):
+        self._loadingForm.setText("Error: {errorMessage}".format(errorMessage=errorMsg))
+
 
 class CheckThread(QThread):
     completed = pyqtSignal()
     updateProcessed = pyqtSignal(str, str, int)
+    errored = pyqtSignal(str)
 
-    def __init__(self, files, csApi, updatedCb, completedCb):
+    def __init__(self, files, csApi, updatedCb, completedCb, errorCb):
         QThread.__init__(self)
         self._files = files
         self._csApi = csApi
         self.completed.connect(completedCb)
         self.updateProcessed.connect(updatedCb)
+        self.errored.connect(errorCb)
         self.start()
 
     def checkAndSaveResults(self, fname):
@@ -82,11 +89,24 @@ class CheckThread(QThread):
             contents = f.read()
             return self._csApi.copyscape_api_text_search_internet(contents, "UTF-8")
 
+    def findBetween(self, s, first, last):
+        try:
+            start = s.index(first) + len(first)
+            end = s.index(last, start)
+            return s[start:end]
+        except ValueError:
+            return ""
+
     def run(self):
         filesDone = 0
         for fname in self._files:
-            response = self.checkAndSaveResults(fname)
+            response = str(self.checkAndSaveResults(fname))
             filesDone += 1
-            self.updateProcessed.emit(fname, str(response), filesDone)
-            self.sleep(1)
+            if "<error>" not in response:
+                self.updateProcessed.emit(fname, response, filesDone)
+                self.msleep(500)
+            else:
+                self.errored.emit(self.findBetween(response, "<error>", "</error>"))
+                self.sleep(5)
+                break
         self.completed.emit()

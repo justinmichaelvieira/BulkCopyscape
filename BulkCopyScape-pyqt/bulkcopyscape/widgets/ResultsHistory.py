@@ -1,4 +1,3 @@
-# TODO: Integrate CheckQueryResult result match SingleResultMatch
 from PyQt5.QtWidgets import QWidget, QListWidgetItem
 from PyQt5.QtCore import Qt, pyqtSlot
 
