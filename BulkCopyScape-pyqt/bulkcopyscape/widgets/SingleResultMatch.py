@@ -8,6 +8,6 @@ class SingleResultMatch(QWidget, Ui_Form):
         super(self.__class__, self).__init__(parent)
         self.setupUi(self)
         self.matchLbl.setText(match)
-        self.urlLbl.setText(url)
+        self.urlLbl.setText("<a href=\"{url}\">{url}</a>".format(url=url))
         self.titleLbl.setText(title)
         self.previewBrowser.setText(browserData)
