@@ -1,2 +1,2 @@
-from bulkcopyscape.main import main
+from bulkcopyscape.__main__ import main
 main()
