@@ -14,7 +14,16 @@ Designed by redditor [http://reddit.com/u/angryrancor](/u/angryrancor) of [Ranco
 
 ![Screen 4](ss4.png)
 
-Desktop/Mobile App - Install instructions
+Desktop/Mobile App - User Install instructions
+=============
+
+Use one of the following:
+
+[MacOS app - md5: 6050ed45a780bfde68d714e32f7e274d](https://github.com/angryrancor/BulkCopyscape/blob/master/BulkCopyScape-pyqt/release/MacOS/BulkCopyScape.zip)
+
+[Windows installer - md5: d16511d3d904d7567a8fa6713c4803ba](https://github.com/angryrancor/BulkCopyscape/blob/master/BulkCopyScape-pyqt/release/Windows/BulkCopyscape_Install.exe)
+
+Desktop/Mobile App - Developer Install instructions
 =============
 
 Requires [Python3](https://www.python.org/downloads/) and [Qt](https://www.qt.io/download). The free open source version of Qt is fine.
