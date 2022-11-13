@@ -1,7 +1,7 @@
 Bulk CopyScape
 =============
 
-Bulk Copyscape is a script that utilizes Copyscape's API to by-pass the normal bulk upload queue, allowing you to quickly check websites for plagiarism or duplicate content in a matter of moments - for free!
+Bulk Copyscape is a script that utilizes Copyscape's API to by-pass the normal bulk upload queue, allowing you to quickly check websites for plagiarism or duplicate content in a matter of moments - for free**!
 
 This tool is great for busy SEO's and webmasters looking to protect their content from thieves or to clear up duplicate information from being found by Google.
 Designed by redditor [http://reddit.com/u/angryrancor](/u/angryrancor) of [Rancorsoft](http://rancorsoft.com). Words by [http://reddit.com/u/fearthejew](/u/fearthejew)
@@ -60,3 +60,7 @@ Other Platforms:
 * Make sure you can upload to the uploads folder (e.g. run "chmod 0644 ./uploads" or similar permissions escalation).
 * Browse to SetupForm.php on your web host or local webserver url.
 * note - if there are problems with hard coded paths or configs, please email justin [at] rancorsoft.com or /u/angryrancor on reddit
+
+Footnotes
+=============
+**This tool is free to use, distribute, and modify; However, querying copyscape requires an account at https://www.copyscape.com/, which charges per-query.
